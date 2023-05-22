@@ -1,0 +1,10 @@
+#include <iostream>
+using namespace std;
+int main() {
+    // Write C++ code here
+   float far,cel;
+   cin>>far;
+   cel=((far-32)*5)/9;
+   cout<<cel;
+    return 0;
+}
