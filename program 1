@@ -1,0 +1,19 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+using namespace std;
+int main() {
+    // Write C++ code here
+    char ch;
+    ch=cin.get();
+    if(ch>='a'&& ch<='z'){
+        cout<<"the character "<<ch<<" is lowercase"<<endl;
+    }
+    else if(ch>='A'&& ch<='Z'){
+        cout<<"the character "<<ch<<" is uppercase"<<endl;
+    }
+    else {
+        cout<<"the character "<<ch<<" is number"<<endl;
+    }
+    
+    return 0;
+}
