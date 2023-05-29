@@ -1,0 +1,57 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+bool isPossible(vector<int>arr,int k,int mid){
+    int n=arr.size();
+    int painterCount=1;
+    int boardSum=0;
+    for(int i=0;i<n;i++){
+        if(boardSum+arr[i]<=mid){
+            boardSum+=arr[i];
+        }
+        else{
+            painterCount++;
+            if(painterCount>k || arr[i]>mid){
+                return false;
+            }
+            boardSum=arr[i];
+        }
+    }
+    return true;
+}
+int paintersPartition(vector<int>arr,int k){
+    int n=arr.size();
+    int s=0;
+    int sum=0;
+    for(int i=0;i<n;i++){
+        sum+=arr[i];
+    }
+    int e=sum;
+    int mid=s+(e-s)/2;
+    int ans=-1;
+    while(s<=e){
+        if(isPossible(arr,k,mid)){
+            ans=mid;
+            e=mid-1;
+        }
+        else{
+            s=mid+1;
+        }
+        mid=s+(e-s)/2;
+    }
+    return ans;
+}
+int main() {
+    // Write C++ code here
+    vector<int>arr;
+   arr.push_back(5);
+   arr.push_back(5);
+   arr.push_back(5);
+   arr.push_back(5);
+   
+   int k=2;
+   int ans=paintersPartition(arr,k);
+   cout<<ans;
+
+    return 0;
+}
