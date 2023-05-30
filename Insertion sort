@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+void swap(int *a, int *b){
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+}
+int main() {
+    // Write C++ code here
+    int arr[5]={50,100,43,21,89};
+    int n=5;
+    //insertion sort
+    int j,key;
+    for(int i=1;i<n;i++){
+        key=arr[i];
+        j=i-1;
+        while(j>=0 && arr[j]>key){
+            arr[j+1]=arr[j];
+            j=j-1;
+        }
+        arr[j+1]=key;
+        
+    }
+    
+    for(int i=0;i<5;i++){
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
