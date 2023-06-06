@@ -1,0 +1,31 @@
+class Solution
+{
+    public:
+    void sort012(int a[], int n)
+    {
+        // code here
+        int i=0;
+        int j=n-1;
+        int k=0;
+        while(k<=j){
+           switch(a[k]){
+               case 0:
+                swap(a[i++],a[k++]);
+                break;  
+                
+               case 1:
+                k++;
+                break;
+             
+               case 2:
+                swap(a[k],a[j--]);
+                break;
+                
+            
+           }
+            
+        }
+        
+    }
+    
+};
