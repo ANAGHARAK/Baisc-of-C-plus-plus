@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int countDistinctWayToClimbStair(int n){
+    if(n<0){
+        return 0;
+    }
+    if(n==0){
+        return 1;
+    }
+    int ans=countDistinctWayToClimbStair(n-1) + countDistinctWayToClimbStair(n-2);
+    return ans;
+}
+int main() {
+    // Write C++ code here
+    int n;
+    cin>>n;
+    cout<<countDistinctWayToClimbStair(n);
+
+    return 0;
+}
