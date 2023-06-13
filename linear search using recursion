@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+bool searchElement(int arr[],int size,int target){
+    if(size==0){
+        return false;
+    }
+    if(arr[0]==target){
+        return true;
+    }
+    else{
+        bool ans=searchElement(arr+1,size-1,target);
+        return ans;
+    }
+    
+    
+}
+int main() {
+    // Write C++ code here
+    int arr[]={2,4,6,8,14,10};
+    int size=6;
+    bool ans=searchElement(arr,size,7);
+    if(ans==true){
+        cout<<"Element is present";
+    }
+    else{
+        cout<<"Element is not present";
+    }
+    return 0;
+}
