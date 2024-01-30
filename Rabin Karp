@@ -1,0 +1,39 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+#define p 256
+double calculateHash(string str){
+    double hash=0;
+    for(int i=0;i<str.length();i++){
+        hash=hash + (str[i]*pow(256,i));
+    }
+    return hash;
+}
+double updateHash(double prevHash,char oldChar,char newChar,int patternLength){
+    double newHash=(prevHash-oldChar)/p;
+    newHash=newHash+newChar*pow(p,patternLength-1);
+    return newHash;
+}
+void search(string text,string pattern){
+    int patternLength=pattern.length();
+    double patternHash=calculateHash(pattern);
+    double textHash=calculateHash(text.substr(0,patternLength));
+    
+    for(int i=0;i<=text.length()-patternLength;i++){
+        if(textHash==patternHash){
+            string temp=text.substr(i,patternLength);
+            if(temp==pattern){
+                cout<<"Pattern found at index "<<i<<endl;
+            }
+        }
+        if(i<text.length()-patternLength){
+            textHash=updateHash(textHash,text[i],text[i+patternLength],patternLength);
+        }
+    }
+}
+int main(){
+    string text="HehereoAnaghahere";
+    string pattern="here";
+    search(text,pattern);
+    return 0;
+}
