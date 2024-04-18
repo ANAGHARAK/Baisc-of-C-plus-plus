@@ -1,0 +1,31 @@
+class Solution {
+public:
+    bool isPrime(int n){
+        if(n<2){
+            return false;
+        }
+        for(int i=2;i<=n/2;i++){
+            if(n%i==0){
+                return false;
+            }
+        }
+        return true;
+    }
+    int maximumPrimeDifference(vector<int>& nums) {
+        int i,j;
+        for(i=0;i<nums.size();i++){
+            if(isPrime(nums[i])){
+                break;
+            }
+        }
+        cout<<i<<endl;
+        for(j=nums.size()-1;j>=i;j--){
+            if(isPrime(nums[j])){
+                break;
+            }
+        }
+        cout<<j<<endl;
+        return j-i;
+
+    }
+};
