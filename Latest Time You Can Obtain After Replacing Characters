@@ -1,0 +1,47 @@
+class Solution {
+public:
+    string findLatestTime(string s) {
+        int flag=0;
+        string h,m;
+        for(int i=0;i<s.length();i++){
+            if(s[i]==':'){
+                flag=1;
+                continue;
+            }
+            if(flag==0){
+                h.push_back(s[i]);
+            }
+            if(flag==1){
+                m.push_back(s[i]);
+            }
+        }
+
+        if(h=="??"){
+            h="11";
+        }
+        if(m=="??"){
+            m="59";
+        }
+        if(h[1]=='?' && h[0]=='0'){
+            h[1]='9';
+        }
+        if(h[1]=='?' && h[0]=='1'){
+            h[1]='1';
+        }
+        if(h[0]=='?' && h[1]<'2'){
+            h[0]='1';
+        }
+        if(h[0]=='?' && h[1]>='2'){
+            h[0]='0';
+        }
+        if(m[0]=='?'){
+            m[0]='5';
+        }
+        if(m[1]=='?'){
+            m[1]='9';
+        }
+        return h+':'+m;
+        
+
+    }
+};
