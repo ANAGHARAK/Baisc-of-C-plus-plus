@@ -1,0 +1,33 @@
+
+#define MOD 1000000007;
+
+int fdp(int ind, int k,vector<int>& a,vector<vector<int>> &dp){
+	if(k<0){
+		return 0;
+	}
+	if(ind==a.size()){
+		if(k==0){
+			return 1;
+		}
+		else{
+			return 0;
+		}
+	}
+	if(dp[ind][k]!=-1){
+		return dp[ind][k];
+	}
+	int ans=fdp(ind+1,k-a[ind],a,dp);
+	ans+=fdp(ind+1,k,a,dp);
+	dp[ind][k]=ans%MOD;
+	return dp[ind][k];
+}
+
+int findWays(vector<int>& arr, int k)
+{
+	// Write your code here.
+	int n=arr.size();
+	vector<vector<int>> dp(n,vector<int>(k+1,-1));
+	return fdp(0,k,arr,dp);
+	// return ftab(arr,k);
+	
+}
