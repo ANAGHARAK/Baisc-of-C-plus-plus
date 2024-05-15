@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int fdp(int ind, int k, vector<int>& energy,vector<int> &dp){
+        if(ind>=energy.size()){
+            return 0;
+        }
+        if(dp[ind]!=INT_MIN){
+            return dp[ind];
+        }
+        dp[ind]=energy[ind]+fdp(ind+k,k,energy,dp);
+        return dp[ind];
+    }
+    int f(int ind, int k, vector<int>& energy){
+        if(ind>=energy.size()){
+            return 0;
+        }
+        int ans=energy[ind]+f(ind+k,k,energy);
+        return ans;
+    }
+    int maximumEnergy(vector<int>& energy, int k) {
+        int n=energy.size();
+        vector<int> dp(n,INT_MIN);
+        int ans=INT_MIN;
+        for(int i=0;i<n;i++){
+            ans=max(ans,fdp(i,k,energy,dp));
+        }
+        return ans;
+    }
+};
