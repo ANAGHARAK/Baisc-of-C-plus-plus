@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.step-wizard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step-wizard-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.step-wizard-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    flex: 1;
+}
+
+.step-wizard-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -50%;
+    height: 2px;
+    width: 100%;
+    background: #d3d3d3;
+    z-index: -1;
+}
+
+.step-wizard-item.completed .progress-count {
+    background: green;
+    color: #fff;
+}
+
+.step-wizard-item.current-item .progress-count {
+    background: yellow;
+    color: #000;
+}
+
+.step-wizard-item .progress-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: #d3d3d3;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+.step-wizard-item .progress-label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: #d3d3d3;
+}
+
+.step-wizard-item.completed .progress-label {
+    color: green;
+}
+
+.step-wizard-item.current-item .progress-label {
+    color: yellow;
+}
+
+.step-wizard-item.pending .progress-label {
+    opacity: 0.5;
+}
+
+.step-wizard-item.pending .progress-count {
+    background: #d3d3d3;
+}
+
+/* Adjust the connector lines */
+.step-wizard-item.completed:not(:last-child)::after {
+    background: yellow;
+}
+
+.step-wizard-item.current-item:not(:last-child)::after {
+    background: #d3d3d3;
+}
